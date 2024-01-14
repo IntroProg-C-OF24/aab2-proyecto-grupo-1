@@ -57,4 +57,3 @@ public class Producto {
         return this.caducidad;
     }
 }
-

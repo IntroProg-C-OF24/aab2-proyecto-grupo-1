@@ -5,11 +5,8 @@ public class Proyecto_5 {
         Scanner sc = new Scanner(System.in);
         String nomArchivo = "Inventario.txt";
         List<Producto> inventario = leerInventario(nomArchivo);
-        /*for (Producto producto : inventario) {
+        for (Producto producto : inventario) {
             System.out.println(producto.getCodigo() + ". "+ producto.getNombre() + " - " + producto.getPrecio() + " - " + producto.getCantidad() + " - " + producto.getCategoria() + " - " + producto.getCaducidad());
-        }*/
-        for(int i=0 ; i<inventario.size() ;i++){
-            System.out.println(inventario);
         }
         sc.close();
     }
@@ -33,14 +30,11 @@ public class Proyecto_5 {
                 Producto producto = new Producto(codigo,nombre, precio, cantidad,categoria,caducidad);
                 inventario.add(producto);
             }
-
         }
          catch (FileNotFoundException e) {
             System.out.println("Error al encontrar archivo "+e);
         }
-
         return inventario;
     }
-    
-}
 
+}
