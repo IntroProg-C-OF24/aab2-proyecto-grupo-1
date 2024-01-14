@@ -1,0 +1,100 @@
+1,Mani,20.0,20,Alimentacion,20/06/2027
+2,Atun,25.0,20,Alimentacion,20/06/2027
+3,Queso,30.0,20,Alimentacion,20/06/2025
+4,Galletas,40.0,100,Alimentacion,20/06/2025
+5,Cerveza,50.0,100,Alimentacion,20/06/2024
+6,Jugo,60.0,100,Alimentacion,20/06/2024
+7,Pan,70.0,10,Alimentacion,03/10/2024
+8,Sopa de Tomate,80.0,10,Alimentacion,03/10/2026
+9,Pescado,90.0,10,Alimentacion,03/10/2026
+10,Gelatina,120.0,10,Alimentacion,03/10/2026
+11,Aceite,110.0,100,Alimentacion,03/10/2026
+12,Papas,120.0,100,Alimentacion,03/10/2026
+13,Pollo,130.0,100,Alimentacion,17/03/2026
+14,Zanahorias,140.0,100,Alimentacion,17/03/2027
+15,Carne,150.0,100,Alimentacion,17/03/2027
+16,Ensalada,160.0,100,Alimentacion,17/03/2027
+17,Tomates,170.0,100,Alimentacion,17/03/2027
+18,Fideos,180.0,100,Alimentacion,13/05/2024
+19,Yogur,190.0,100,Alimentacion,13/05/2024
+20,Mermelada,200.0,100,Alimentacion,13/05/2024
+21,Lámina magnética,5.0,47,Educacion,20/06/2027
+22,Resorte flexifilo,6.0,24,Educacion,20/06/2027
+23,Mesa de manipulación,7.0,46,Educacion,20/06/2025
+24,Fondo de colores para bolsa,8.0,117,Educacion,20/06/2025
+25,Pinzas para recortar papel,9.0,200,Educacion,20/06/2024
+26,Escobilla de acero inoxidable,10.0,180,Educacion,20/06/2024
+27,Bolsa de plástico,11.0,22,Educacion,03/10/2024
+28,Sobre para proteger cosas pequeñas,12.0,199,Educacion,03/10/2026
+29,Marcador,13.0,50,Educacion,03/10/2026
+30,Bolígrafo,14.0,122,Educacion,03/10/2026
+31,Lápiz,15.0,174,Educacion,03/10/2026
+32,Panel de aluminio para cubierta,16.0,195,Educacion,03/10/2026
+33,Paleta para colorear,17.0,196,Educacion,17/03/2026
+34,Juego de maletas plásticas,18.0,143,Educacion,17/03/2027
+35,Tiras adhesivas para coser,19.0,60,Educacion,17/03/2027
+36,Kit de repostería básica,20.0,87,Educacion,17/03/2027
+37,Puzzle,21.0,186,Educacion,17/03/2027
+38,Set de accesorios para bolsa,22.0,49,Educacion,13/05/2024
+39,Bolsa para zapatos,23.0,73,Educacion,13/05/2024
+40,Guantes de cocina,24.0,40,Educacion,13/05/2024
+41,Cama para mascotas,99.62,99,Hogar,20/06/2027
+42,Recortador de barba,8.86,34,Hogar,20/06/2027
+43,Accesorios para dispositivos móviles,15.45,35,Hogar,20/06/2025
+44,Gel hidroalcohólico,199.77,181,Hogar,20/06/2025
+45,Ropa deportiva,183.54,80,Hogar,20/06/2024
+46,Fajas para el cuerpo,156.68,153,Hogar,20/06/2024
+47,Máscara o mascarilla,184.54,44,Hogar,03/10/2024
+48,Guantes de nitrilo,120.71,83,Hogar,03/10/2026
+49,Dispositivos de ahorro de energía,256.88,15,Hogar,03/10/2026
+50,Productos de depilación,134.7,12,Hogar,03/10/2026
+51,Productos para bebés,82.95,93,Hogar,03/10/2026
+52,Gadgets,252.59,200,Hogar,03/10/2026
+53,Botellas re utilizables,0.15,146,Hogar,17/03/2026
+54,Vaporizador de leche eléctrico,234.05,74,Hogar,17/03/2027
+55,Repetidor de Red Wifi,265.92,110,Hogar,17/03/2027
+56,Decoración temática espacial,148.98,66,Hogar,17/03/2027
+57,Mini proyector para teléfono móvil,85.84,187,Hogar,17/03/2027
+58,Libros,156.39,176,Hogar,13/05/2024
+59,Controlador de porciones de comida,86.13,77,Hogar,13/05/2024
+60,Dispositivos Amazon,73.79,148,Hogar,13/05/2024
+61,Traje ejecutivo en algodón y seda,184.11,96,Vestimenta,20/06/2027
+62,Chaleco ejecutivo en seda,234.23,54,Vestimenta,20/06/2027
+63,Blazer ejecutivo en gabardina o algodón mezclado,106.84,113,Vestimenta,20/06/2025
+64,Traje de lujo en fibra sintética y lana,103.25,59,Vestimenta,20/06/2025
+65,Traje de baile en algodón,24.45,165,Vestimenta,20/06/2024
+66,Camisa blanca en algodón y seda,12.02,11,Vestimenta,20/06/2024
+67,Camisa cuadriculada en algodón,94.26,93,Vestimenta,03/10/2024
+68,Camisa sport en algodón,148.88,53,Vestimenta,03/10/2026
+69,Pantalón deportivo en algodón,103.79,111,Vestimenta,03/10/2026
+70,Pantalón chino en seda y algodón,3.01,95,Vestimenta,03/10/2026
+71,Frac de smoking en algodón,255.53,20,Vestimenta,03/10/2026
+72,Cami acolchado en fibra sintética y algodón,46.7,74,Vestimenta,03/10/2026
+73,Chaqueta acolchada en gabardina,160.4,18,Vestimenta,17/03/2026
+74,Prenda de abrigo en fibra sintética,160.6,74,Vestimenta,17/03/2027
+75,Vestido largo en seda,235.06,170,Vestimenta,17/03/2027
+76,Vestido casual en algodón y fibra sintética,228.8,2,Vestimenta,17/03/2027
+77,Bolsa de mano en cuero de cabra,29.98,196,Vestimenta,17/03/2027
+78,Bolso de lujo en cuero y seda,144.69,59,Vestimenta,13/05/2024
+79,Zapatillas casuales en tela sintética,209.48,198,Vestimenta,13/05/2024
+80,Zapatos de vestir en cuero y acero,227.25,184,Vestimenta,13/05/2024
+81,Pinzas dentales,21.94,8,Salud,20/06/2027
+82,Bisturí,14.63,52,Salud,20/06/2027
+83,Escalpel,37.03,27,Salud,20/06/2025
+84,Fórceps,31.69,64,Salud,20/06/2025
+85,Tijeras quirúrgicas,14.46,17,Salud,20/06/2024
+86,Tenacillas de pellizcar,11.57,82,Salud,20/06/2024
+87,Aguja de hilo dental,3.68,53,Salud,03/10/2024
+88,Espátula,9.88,90,Salud,03/10/2026
+89,Vaso de Kidd,31.3,69,Salud,03/10/2026
+90,Sifón de borbotones,2.12,17,Salud,03/10/2026
+91,Bolsa de esponja,6.97,12,Salud,03/10/2026
+92,Tapabocas quirúrgico,35.52,92,Salud,03/10/2026
+93,Guantes estériles,40.31,42,Salud,17/03/2026
+94,Bota de piel de cordero,1.25,50,Salud,17/03/2027
+95,Gasa,19.73,25,Salud,17/03/2027
+96,Algodón de lienzo,7.41,15,Salud,17/03/2027
+97,Colirios,30.08,46,Salud,17/03/2027
+98,Agujero de alfiler,33.61,32,Salud,13/05/2024
+99,Eyedropper,14.58,96,Salud,13/05/2024
+100,Compresa,14.07,69,Salud,13/05/2024

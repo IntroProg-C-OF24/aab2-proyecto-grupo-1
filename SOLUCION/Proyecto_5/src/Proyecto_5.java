@@ -1,22 +1,38 @@
 import java.util.*;
+import java.io.*;
 public class Proyecto_5 {
     public static void main(String[] args) throws Exception {
-        String nomCatCadProd[][] = new String[20][7];
-        double preCanProd[][] = new double[20][2];
-        Gen_Precio_Cantidad_Producto(preCanProd);
-    }
-    public static void Gen_Nombre_Categoria_Producto(String matriz[][]){
-        
-    }
-    public static void Gen_Precio_Cantidad_Producto(double matriz[][]){
-        Random ran = new Random();
-        for(int i=0 ; i<matriz.length ; i++){
-            matriz[i][0] = ran.nextInt(100)+1;
-            matriz[i][1] = ran.nextDouble()*19;
+        String nomArchivo = "Inventario.txt";
+        List<Producto> inventario = leerInventario(nomArchivo);
+        for (Producto producto : inventario) {
+            System.out.println(producto.getCodigo() + ". "+ producto.getNombre() + " - " + producto.getPrecio() + " - " + producto.getCantidad() + " - " + producto.getCategoria() + " - " + producto.getCaducidad());
         }
     }
-    public static void Gen_Facturar(){
-        //generar una factura
+
+    public static List<Producto> leerInventario(String archivo) {
+        List<Producto> inventario = new ArrayList<>();
+
+        try (Scanner scanner = new Scanner(new File(archivo))) {
+            while (scanner.hasNextLine()) {
+                String linea = scanner.nextLine();
+                String[] partes = linea.split(",");
+
+                int codigo = Integer.parseInt(partes[0].trim());
+                String nombre = partes[1].trim();
+                double precio = Double.parseDouble(partes[2].trim());
+                int cantidad = Integer.parseInt(partes[3].trim());
+                String categoria = partes[4].trim();
+                String caducidad = partes[5].trim();
+
+                Producto producto = new Producto(codigo,nombre, precio, cantidad,categoria,caducidad);
+                inventario.add(producto);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Error al encontrar archivo "+e);
+        }
+
+        return inventario;
     }
     
 }
+
