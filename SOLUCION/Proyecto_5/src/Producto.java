@@ -18,8 +18,8 @@ public class Producto {
     }
 
     //SETTERS
-    public void setCodigo(String codigoINT){
-        this.nombre = codigoINT;
+    public void setCodigo(int codigoINT){
+        this.codigo = codigoINT;
     }
     public void setNombre(String nombreString){
         this.nombre = nombreString;
@@ -34,8 +34,9 @@ public class Producto {
         this.categoria = categoriaString;
     }
     public void setCaducidad(String caducidadString){
-        this.nombre = caducidadString;
+        this.caducidad = caducidadString;
     }
+
     //GETTERS
     public int getCodigo(){
         return this.codigo;

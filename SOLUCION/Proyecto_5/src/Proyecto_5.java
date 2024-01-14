@@ -2,17 +2,23 @@ import java.util.*;
 import java.io.*;
 public class Proyecto_5 {
     public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
         String nomArchivo = "Inventario.txt";
         List<Producto> inventario = leerInventario(nomArchivo);
-        for (Producto producto : inventario) {
+        /*for (Producto producto : inventario) {
             System.out.println(producto.getCodigo() + ". "+ producto.getNombre() + " - " + producto.getPrecio() + " - " + producto.getCantidad() + " - " + producto.getCategoria() + " - " + producto.getCaducidad());
+        }*/
+        for(int i=0 ; i<inventario.size() ;i++){
+            System.out.println(inventario);
         }
+        sc.close();
     }
 
     public static List<Producto> leerInventario(String archivo) {
         List<Producto> inventario = new ArrayList<>();
 
-        try (Scanner scanner = new Scanner(new File(archivo))) {
+        try(Scanner scanner = new Scanner(new File(archivo))) {
+            
             while (scanner.hasNextLine()) {
                 String linea = scanner.nextLine();
                 String[] partes = linea.split(",");
@@ -27,7 +33,9 @@ public class Proyecto_5 {
                 Producto producto = new Producto(codigo,nombre, precio, cantidad,categoria,caducidad);
                 inventario.add(producto);
             }
-        } catch (FileNotFoundException e) {
+
+        }
+         catch (FileNotFoundException e) {
             System.out.println("Error al encontrar archivo "+e);
         }
 
