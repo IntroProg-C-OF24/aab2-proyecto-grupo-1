@@ -1,11 +1,11 @@
 public class Producto {
     //ATRIBUTOS
-    public int codigo;
-    public String nombre;
-    public double precio;
-    public int cantidad;
-    public String categoria;
-    public String caducidad;
+    private int codigo;
+    private String nombre;
+    private double precio;
+    private int cantidad;
+    private String categoria;
+    private String caducidad;
 
     //CONSTRUCTOR
     public Producto(int codigo, String nombre, Double precio, int cantidad, String categoria, String caducidad){
@@ -55,5 +55,17 @@ public class Producto {
     }
     public String getCaducidad(){
         return this.caducidad;
+    }
+    //RESTAR CANTIDAD
+    public void restarCantidad(int ran_Cant){
+        if (this.cantidad > 0) {
+            if (this.cantidad < ran_Cant) {
+            this.cantidad-=ran_Cant;
+            }else{
+                System.out.println("");
+            }
+        }else{
+            System.out.println("No hay en STOCK");
+        }
     }
 }
