@@ -38,7 +38,8 @@ public class Proyecto_5 {
         for (int i = 0; i < limFactura; i++) {
             int limProductos = ran.nextInt(10) + 1;
             generarFactura(inventario, limProductos);
-            System.out.println("-----------------------------------------------------------------------------------------------------------");
+            System.out.println(
+                    "-----------------------------------------------------------------------------------------------------------");
             System.out.println();
             System.out.println(
                     "Cod \t\t\t" + "Nombre \t\t\t\t" + " Cant \t" + " Descuento \t" +
@@ -50,7 +51,8 @@ public class Proyecto_5 {
                         prodFact.getTotal());
             }
             System.out.println();
-            System.out.println("-----------------------------------------------------------------------------------------------------------");
+            System.out.println(
+                    "-----------------------------------------------------------------------------------------------------------");
             System.out.printf("SUBTOTAL \t\t %.2f \n", subTotal);
             System.out.printf("DESCUENTO \t\t %.2f\n", sumaDescuentos, "$");
             System.out.printf("AHORRO POR AFILIACION \t %.2f\n", subDescuentoAfiliado);
@@ -71,7 +73,7 @@ public class Proyecto_5 {
             System.out.println();
         }
 
-        //PresentarInventario(inventario);
+        // PresentarInventario(inventario);
 
         sc.close();
     }
@@ -121,21 +123,8 @@ public class Proyecto_5 {
     }
 
     public static void generarFactura(List<Producto> inventario, int limProductos) {
-        subTotal = 0;
-        subIva = 0;
-        total = 0;
-        subDescuentoAfiliado = 0;
-        sumaDescuentos = 0;
-        carrito = new ArrayList<>();
-        descuento = 0;
-        deducibleTotal = 0;
-        alimentacionD = 0;
-        educacionD = 0;
-        hogarD = 0;
-        vestimentaD = 0;
-        saludD = 0;
+        ReinicioVariables();
         double precioT;
-        String categoriaD;
         double preciounitario;
 
         for (int i = 0; i < limProductos; i++) {
@@ -161,21 +150,11 @@ public class Proyecto_5 {
                         precioT);
                 carrito.add(factura);
             }
-            categoriaD = producto.getCategoria();
-            if ("Alimentacion".equals(categoriaD)) {
-                alimentacionD += precioT;
-            } else if ("Educacion".equals(categoriaD)) {
-                educacionD += precioT;
-            } else if ("Hogar".equals(categoriaD)) {
-                hogarD += precioT;
-            } else if ("Vestimenta".equals(categoriaD)) {
-                vestimentaD += precioT;
-            } else if ("Salud".equals(categoriaD)) {
-                saludD += precioT;
-            }
-            deducibleTotal += precioT;
+            
+            DeduciblesImpuestos(producto.getCategoria(), precioT);
 
-            EscribirEstadistica(codigo, producto.getNombre(), categoriaD, cantidad);
+            EscribirEstadistica(codigo, producto.getNombre(), producto.getCategoria(), cantidad);
+
         }
 
         verificarAfiliado();
@@ -247,6 +226,37 @@ public class Proyecto_5 {
             return false;
         }
         return file.length() > 0;
+    }
+
+    public static void ReinicioVariables() {
+        subTotal = 0;
+        subIva = 0;
+        total = 0;
+        subDescuentoAfiliado = 0;
+        sumaDescuentos = 0;
+        carrito = new ArrayList<>();
+        descuento = 0;
+        deducibleTotal = 0;
+        alimentacionD = 0;
+        educacionD = 0;
+        hogarD = 0;
+        vestimentaD = 0;
+        saludD = 0;
+    }
+
+    public static void DeduciblesImpuestos(String categoriaD, double precioT) {
+        if ("Alimentacion".equals(categoriaD)) {
+            alimentacionD += precioT;
+        } else if ("Educacion".equals(categoriaD)) {
+            educacionD += precioT;
+        } else if ("Hogar".equals(categoriaD)) {
+            hogarD += precioT;
+        } else if ("Vestimenta".equals(categoriaD)) {
+            vestimentaD += precioT;
+        } else if ("Salud".equals(categoriaD)) {
+            saludD += precioT;
+        }
+        deducibleTotal += precioT;
     }
 
 }
