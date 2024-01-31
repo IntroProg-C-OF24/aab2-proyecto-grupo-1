@@ -1,3 +1,4 @@
+
 import java.util.*;
 import java.io.*;
 import java.text.DecimalFormat;
@@ -5,6 +6,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Factura {
+
     // ATRIBUTOS
     private int codigo;
     private String nombre;
@@ -26,39 +28,31 @@ public class Factura {
     static double iva = 0.12;
     static double total;
     static double descuentoAfiliado = 0.05;
-    static double alimentacionD;
-    static double educacionD;
-    static double hogarD;
-    static double vestimentaD;
-    static double saludD;
-    static boolean afiliado = false;
+    static int alimentacionD;
+    static int educacionD;
+    static int hogarD;
+    static int vestimentaD;
+    static int saludD;
     static List<Factura> carrito;
     static int stock = 100;
-    static String archivoEstadistica = "Estadistica\\Estadisticas.csv";
-    static int nroFactura = ran.nextInt(1000) + 1;
+    public static String archivoEstadistica = "Estadistica\\Estadisticas.csv";
     // CADENA VARIABLES
     static String cadena_subTotal;
     static String cadena_subIva;
-    static String cadena_descuento;
     static String cadena_sumaDescuentos;
     static String cadena_subDescuentoAfiliado;
-    static String cadena_iva = "0.12";
     static String cadena_total;
-    static String cadena_alimentacionD;
-    static String cadena_educacionD;
-    static String cadena_hogarD;
-    static String cadena_vestimentaD;
-    static String cadena_saludD;
     //
     // RUTA ARCHIVO
-    static String rutaArchivo = "Facturas\\Factura.txt";
-    static File facturas = new File(rutaArchivo);
+    public static String archivoFactura = "Facturas\\Factura.txt";
+    static File facturas = new File(archivoFactura);
 
     //
     public static void main(String[] args) {
         // GenerarArchivoFactura();
     }
 
+    //CONSTRUCTOR
     public Factura(int codigo, String nombre, int cantidad, double descuento, double precio, double total) {
         this.codigo = codigo;
         this.nombre = nombre;
@@ -68,7 +62,8 @@ public class Factura {
         this.totalFac = total;
     }
 
-    // GETERS
+    //
+    // GETERS //////////////////
     public int getCodigo() {
         return this.codigo;
     }
@@ -92,15 +87,15 @@ public class Factura {
     public double getTotal() {
         return this.totalFac;
     }
+    ///////////////////////////
 
     public static void generarFactura(List<Producto> inventario, int limProductos, String cliente, int cedula, String direccion) {
         ReinicioVariables();
         double precioT;
         double preciounitario;
-
+        int nroFactura = ran.nextInt(1000) + 1;
         for (int i = 0; i < limProductos; i++) {
             int codigo = ran.nextInt(100) + 1;
-            nroFactura = ran.nextInt(1000) + 1;
             Producto producto = buscaProducto(inventario, codigo);
             int cantidad = ran.nextInt(10) + 1;
             producto.restarCantidad(cantidad);
@@ -125,33 +120,26 @@ public class Factura {
 
             DeduciblesImpuestos(producto.getCategoria());
             EscribirEstadistica(codigo, producto.getNombre(), producto.getCategoria(), cantidad);
-            TransformarDosDecimals();
         }
-        GenerarArchivoFactura(carrito, cadena_subTotal, cadena_sumaDescuentos, cadena_subDescuentoAfiliado, iva,
-                cadena_subIva, cadena_total, cliente, cedula,direccion, nroFactura, cadena_hogarD, cadena_educacionD,
-                cadena_alimentacionD, cadena_vestimentaD, cadena_saludD);
-        verificarAfiliado();
-        if (afiliado) {
+
+        if (verificarAfiliado()) {
             total = subTotal - sumaDescuentos;
             subDescuentoAfiliado = total * descuentoAfiliado;
             total -= subDescuentoAfiliado;
             subIva = total * iva;
             total += subIva;
-
         } else {
             total = subTotal - sumaDescuentos;
             subIva = total * iva;
             total += subIva;
         }
+        GenerarArchivoFactura(carrito, cliente, cedula, direccion, nroFactura, hogarD, educacionD,
+                alimentacionD, vestimentaD, saludD);
     }
 
-    public static void verificarAfiliado() {
+    public static boolean verificarAfiliado() {
         int aux = ran.nextInt(2) + 1;
-        if (aux == 1) {
-            afiliado = true;
-        } else {
-            afiliado = false;
-        }
+        return aux == 1;
     }
 
     public static void aplicarDescuentoProducto(Producto producto) {
@@ -184,28 +172,30 @@ public class Factura {
         DecimalFormat formato = new DecimalFormat("#.##");
         cadena_subTotal = formato.format(subTotal);
         cadena_subIva = formato.format(subIva);
-        cadena_descuento = formato.format(descuento);
         cadena_sumaDescuentos = formato.format(sumaDescuentos);
         cadena_subDescuentoAfiliado = formato.format(subDescuentoAfiliado);
         cadena_total = formato.format(total);
-        cadena_alimentacionD = formato.format(alimentacionD);
-        cadena_educacionD = formato.format(educacionD);
-        cadena_hogarD = formato.format(hogarD);
-        cadena_vestimentaD = formato.format(vestimentaD);
-        cadena_saludD = formato.format(saludD);
     }
 
     public static void DeduciblesImpuestos(String categoriaD) {
-        if ("Alimentacion".equals(categoriaD)) {
-            alimentacionD = ran.nextInt(10)+1;
-        } else if ("Educacion".equals(categoriaD)) {
-            educacionD = ran.nextInt(10)+1;
-        } else if ("Hogar".equals(categoriaD)) {
-            hogarD = ran.nextInt(10)+1;
-        } else if ("Vestimenta".equals(categoriaD)) {
-            vestimentaD = ran.nextInt(10)+1;
-        } else if ("Salud".equals(categoriaD)) {
-            saludD = ran.nextInt(10)+1;
+        switch (categoriaD) {
+            case "Alimentacion":
+                alimentacionD = ran.nextInt(10) + 1;
+                break;
+            case "Educacion":
+                educacionD = ran.nextInt(10) + 1;
+                break;
+            case "Hogar":
+                hogarD = ran.nextInt(10) + 1;
+                break;
+            case "Vestimenta":
+                vestimentaD = ran.nextInt(10) + 1;
+                break;
+            case "Salud":
+                saludD = ran.nextInt(10) + 1;
+                break;
+            default:
+                break;
         }
     }
 
@@ -228,8 +218,7 @@ public class Factura {
 
     public static void EscribirEstadistica(int codigo, String nombre, String categoria, int nroVentas) {
 
-        try {
-            FileWriter fw = new FileWriter(archivoEstadistica, true);
+        try (FileWriter fw = new FileWriter(archivoEstadistica, true)) {
             File archivo = new File("Estadistica\\Estadisticas.csv");
             if (ArchivoVacio(archivoEstadistica)) {
                 fw.write(fechaFormat + ";" + codigo + ";" + nombre + ";" + categoria + ";" + nroVentas + "\r\n");
@@ -238,22 +227,19 @@ public class Factura {
                 fw.write("Fecha;Codigo;Nombre;Categoria;Ventas \r\n");
                 fw.write(fechaFormat + ";" + codigo + ";" + nombre + ";" + categoria + ";" + nroVentas + "\r\n");
             }
-
-            fw.close();
         } catch (IOException e) {
             System.out.println("Error al encontrar archivo " + e);
         }
 
     }
 
-    public static void GenerarArchivoFactura(List<Factura> carrito, String subTotal, String sumaDescuentos,
-            String subDescuentoAfiliado, double iva, String subIva, String total, String cliente, int cedula, String direccion,
-            int nroFactura, String hogarD, String educacionD, String alimentacionD, String vestimentaD, String saludD) {
-        try {
+    public static void GenerarArchivoFactura(List<Factura> carrito, String cliente, int cedula, String direccion,
+            int nroFactura, int hogarD, int educacionD, int alimentacionD, int vestimentaD, int saludD) {
+        try (FileWriter fw = new FileWriter(facturas, true)) {
             if (!facturas.exists()) {
                 facturas.createNewFile();
             }
-            FileWriter fw = new FileWriter(facturas, true);
+            TransformarDosDecimals();
             fw.write(
                     "----------------------------------------------- SUPERMAXI -----------------------------------------------\r\n");
             fw.write(
@@ -276,7 +262,7 @@ public class Factura {
             fw.write(
                     "---------------------------------------------------------------------------------------------------------\r\n");
             fw.write("SUBTOTAL                  " + cadena_subTotal + "\r\n");
-            fw.write("DESCUENTO                 " + cadena_sumaDescuentos + "%" +"\r\n");
+            fw.write("DESCUENTO                 " + cadena_sumaDescuentos + "\r\n");
             fw.write("AHORRO POR AFILIACION     " + cadena_subDescuentoAfiliado + "\r\n");
             fw.write("IVA                       " + iva + "%" + "\r\n");
             fw.write("SUBIVA                    " + cadena_subIva + "\r\n");
@@ -290,30 +276,28 @@ public class Factura {
             fw.write("AUTORIZACION SRI             " + nroFactura + "\r\n");
             fw.write("Forma de Pago                " + formaPago() + "\r\n");
             fw.write("========== DEDUCIBLES ==========" + "\r\n");
-            fw.write("Vivienda          " + cadena_hogarD + "% "+"\r\n");
-            fw.write("Educacion         " + cadena_educacionD + "% "+"\r\n");
-            fw.write("Alimentacion      " + cadena_alimentacionD + "% "+"\r\n");
-            fw.write("Vestimenta        " + cadena_vestimentaD + "% "+"\r\n");
-            fw.write("Salud             " + cadena_saludD + "% "+"\r\n");
+            fw.write("Vivienda          " + hogarD + "% " + "\r\n");
+            fw.write("Educacion         " + educacionD + "% " + "\r\n");
+            fw.write("Alimentacion      " + alimentacionD + "% " + "\r\n");
+            fw.write("Vestimenta        " + vestimentaD + "% " + "\r\n");
+            fw.write("Salud             " + saludD + "% " + "\r\n");
             fw.write("---------------------------------" + "\r\n");
-            fw.close();
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println("EROR AL CREAR ARCHIVO " + e);
         }
 
     }
 
     public static String formaPago() {
-        String forma;
         int n = ran.nextInt(3) + 1;
-        if (n == 1) {
-            forma = "Efectivo";
-        } else if (n == 2) {
-            forma = "tarjeta de credito";
-        } else {
-            forma = "tarjeta de debito";
+        switch (n) {
+            case 1:
+                return "Efectivo";
+            case 2:
+                return "tarjeta de credito";
+            default:
+                return "tarjeta de debito";
         }
-        return forma;
     }
 
 }
