@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 
 public class Main {
-    static String archivoInventario = "Inventario.csv";
+    static String archivoInventario = "Inventario\\Inventario.csv";
 
     public static void main(String[] args) throws Exception {
         String cliente = "Juan Manuel Gomez Lopez";

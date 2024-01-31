@@ -34,7 +34,7 @@ public class Factura {
     static boolean afiliado = false;
     static List<Factura> carrito;
     static int stock = 100;
-    static String archivoEstadistica = "Estadisticas.csv";
+    static String archivoEstadistica = "Estadistica\\Estadisticas.csv";
     static int nroFactura = ran.nextInt(1000) + 1;
     // CADENA VARIABLES
     static String cadena_subTotal;
@@ -230,9 +230,11 @@ public class Factura {
 
         try {
             FileWriter fw = new FileWriter(archivoEstadistica, true);
+            File archivo = new File("Estadistica\\Estadisticas.csv");
             if (ArchivoVacio(archivoEstadistica)) {
                 fw.write(fechaFormat + ";" + codigo + ";" + nombre + ";" + categoria + ";" + nroVentas + "\r\n");
             } else {
+                archivo.createNewFile();
                 fw.write("Fecha;Codigo;Nombre;Categoria;Ventas \r\n");
                 fw.write(fechaFormat + ";" + codigo + ";" + nombre + ";" + categoria + ";" + nroVentas + "\r\n");
             }
