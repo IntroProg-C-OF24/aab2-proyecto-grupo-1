@@ -126,7 +126,6 @@ public class Factura {
                 DeduciblesImpuestos(producto.getCategoria());
                 EscribirEstadistica(codigo, producto.getNombre(), producto.getCategoria(), cantidad);
             }else if (producto.getCantidad() > 0) {
-                producto.setCantidad(0);
                 preciounitario = producto.getPrecio();
                 aplicarDescuentoProducto(producto);
                 if (descuento > 0) {
@@ -150,6 +149,7 @@ public class Factura {
 
                 DeduciblesImpuestos(producto.getCategoria());
                 EscribirEstadistica(codigo, producto.getNombre(), producto.getCategoria(), cantidad);
+                producto.setCantidad(0);
             }
         }
         if (verificarAfiliado()) {
