@@ -69,10 +69,6 @@ public class Producto {
 
     // RESTAR CANTIDAD
     public void restarCantidad(int ran_Cant) {
-        if (this.cantidad > 0) {
             this.cantidad -= ran_Cant;
-        }else{
-            System.out.println("NO HAY SUFICIENTES EN STOCk");
-        }
     }
 }

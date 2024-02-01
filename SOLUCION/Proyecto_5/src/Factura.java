@@ -44,7 +44,8 @@ public class Factura {
     static String cadena_total;
     //
     // RUTA ARCHIVO
-    public static String archivoFactura = "Facturas\\Factura.txt";
+    public static String archivoFactura = "Facturas\\Factura.csv";
+    static String archivoInventario = "Inventario\\Inventario.csv";
     static File facturas = new File(archivoFactura);
 
     //
@@ -52,7 +53,7 @@ public class Factura {
         // GenerarArchivoFactura();
     }
 
-    //CONSTRUCTOR
+    // CONSTRUCTOR
     public Factura(int codigo, String nombre, int cantidad, double descuento, double precio, double total) {
         this.codigo = codigo;
         this.nombre = nombre;
@@ -89,39 +90,68 @@ public class Factura {
     }
     ///////////////////////////
 
-    public static void generarFactura(List<Producto> inventario, int limProductos, String cliente, int cedula, String direccion) {
+    public static void generarFactura(List<Producto> inventario, int limProductos, String cliente, int cedula,
+            String direccion, int numFactura) {
         ReinicioVariables();
         double precioT;
         double preciounitario;
-        int nroFactura = ran.nextInt(1000) + 1;
+        int autorizacionSRI = ran.nextInt(1000) + 1;
         for (int i = 0; i < limProductos; i++) {
             int codigo = ran.nextInt(100) + 1;
             Producto producto = buscaProducto(inventario, codigo);
-            int cantidad = ran.nextInt(10) + 1;
-            producto.restarCantidad(cantidad);
-            preciounitario = producto.getPrecio();
-            aplicarDescuentoProducto(producto);
-            if (descuento > 0) {
-                preciounitario -= producto.getPrecio() * descuento;
-                precioT = preciounitario * cantidad;
-                sumaDescuentos += preciounitario;
-                subTotal += preciounitario * cantidad;
-                Factura factura = new Factura(codigo, producto.getNombre(), cantidad, descuento, producto.getPrecio(),
-                        precioT);
-                carrito.add(factura);
+            int cantidad = ran.nextInt(5) + 1;
+            if (producto.getCantidad() > cantidad) {
+                producto.restarCantidad(cantidad);
+                preciounitario = producto.getPrecio();
+                aplicarDescuentoProducto(producto);
+                if (descuento > 0) {
+                    preciounitario -= producto.getPrecio() * descuento;
+                    precioT = preciounitario * cantidad;
+                    sumaDescuentos += preciounitario;
+                    subTotal += preciounitario * cantidad;
+                    Factura factura = new Factura(codigo, producto.getNombre(), cantidad, descuento,
+                            producto.getPrecio(),
+                            precioT);
+                    carrito.add(factura);
 
-            } else {
-                subTotal += preciounitario * cantidad;
-                precioT = preciounitario * cantidad;
-                Factura factura = new Factura(codigo, producto.getNombre(), cantidad, descuento, producto.getPrecio(),
-                        precioT);
-                carrito.add(factura);
+                } else {
+                    subTotal += preciounitario * cantidad;
+                    precioT = preciounitario * cantidad;
+                    Factura factura = new Factura(codigo, producto.getNombre(), cantidad, descuento,
+                            producto.getPrecio(),
+                            precioT);
+                    carrito.add(factura);
+                }
+
+                DeduciblesImpuestos(producto.getCategoria());
+                EscribirEstadistica(codigo, producto.getNombre(), producto.getCategoria(), cantidad);
+            }else if (producto.getCantidad() > 0) {
+                producto.setCantidad(0);
+                preciounitario = producto.getPrecio();
+                aplicarDescuentoProducto(producto);
+                if (descuento > 0) {
+                    preciounitario -= producto.getPrecio() * descuento;
+                    precioT = preciounitario * cantidad;
+                    sumaDescuentos += preciounitario;
+                    subTotal += preciounitario * cantidad;
+                    Factura factura = new Factura(codigo, producto.getNombre(), cantidad, descuento,
+                            producto.getPrecio(),
+                            precioT);
+                    carrito.add(factura);
+
+                } else {
+                    subTotal += preciounitario * cantidad;
+                    precioT = preciounitario * cantidad;
+                    Factura factura = new Factura(codigo, producto.getNombre(), producto.getCantidad(), descuento,
+                            producto.getPrecio(),
+                            precioT);
+                    carrito.add(factura);
+                }
+
+                DeduciblesImpuestos(producto.getCategoria());
+                EscribirEstadistica(codigo, producto.getNombre(), producto.getCategoria(), cantidad);
             }
-
-            DeduciblesImpuestos(producto.getCategoria());
-            EscribirEstadistica(codigo, producto.getNombre(), producto.getCategoria(), cantidad);
         }
-
         if (verificarAfiliado()) {
             total = subTotal - sumaDescuentos;
             subDescuentoAfiliado = total * descuentoAfiliado;
@@ -133,8 +163,11 @@ public class Factura {
             subIva = total * iva;
             total += subIva;
         }
-        GenerarArchivoFactura(carrito, cliente, cedula, direccion, nroFactura, hogarD, educacionD,
-                alimentacionD, vestimentaD, saludD);
+        if (!carrito.isEmpty()) {
+            GenerarArchivoFactura(carrito, cliente, cedula, direccion, autorizacionSRI,
+            numFactura, hogarD, educacionD,
+            alimentacionD, vestimentaD, saludD);
+        }
     }
 
     public static boolean verificarAfiliado() {
@@ -234,54 +267,55 @@ public class Factura {
     }
 
     public static void GenerarArchivoFactura(List<Factura> carrito, String cliente, int cedula, String direccion,
-            int nroFactura, int hogarD, int educacionD, int alimentacionD, int vestimentaD, int saludD) {
+            int autorizacionSRI,int numFactura, int hogarD, int educacionD, int alimentacionD, int vestimentaD, int saludD) {
         try (FileWriter fw = new FileWriter(facturas, true)) {
             if (!facturas.exists()) {
                 facturas.createNewFile();
             }
             TransformarDosDecimals();
             fw.write(
-                    "----------------------------------------------- SUPERMAXI -----------------------------------------------\r\n");
+                    "----------------------------------------------- SUPERMAXI -----------------------------------------------;\r\n");
             fw.write(
-                    "                                           DIRECCION SUCURSAL:                                           \r\n");
+                    "                                           DIRECCION SUCURSAL:                                           ;\r\n");
             fw.write(
-                    "                                           AV. 18 DE NOVIEMBRE                                           \r\n");
+                    "                                           AV. 18 DE NOVIEMBRE                                           ;\r\n");
             fw.write(
-                    "                                             LOJA - ECUADOR                                              \r\n");
+                    "                                             LOJA - ECUADOR                                              ;\r\n");
             fw.write(
-                    "                                            RUC:1790016919001                                            \r\n");
+                    "                                            RUC:1790016919001                                            ;\r\n");
             fw.write(
-                    "---------------------------------------------------------------------------------------------------------\r\n");
-            fw.write("COD       Descipcion                                   Cant  Descuento PrecioU Total\r\n");
+                    "---------------------------------------------------------------------------------------------------------;\r\n");
+            fw.write("COD;Descipcion;Cant;Descuento;PrecioU;Total\r\n");
             for (Factura prodFact : carrito) {
                 String formatoTotal = String.format("%.2f", prodFact.getTotal());
-                fw.write(String.format("%-5s %-50s %-6s %-8s %-6s %-8s%n",
-                        prodFact.getCodigo(), prodFact.getNombre(), prodFact.getCantidad(),
-                        prodFact.getDescuento(), prodFact.getPrecio(), formatoTotal));
+
+                fw.write(prodFact.getCodigo() + ";" + prodFact.getNombre() + ";" + prodFact.getCantidad() + ";"
+                        + prodFact.getDescuento() + ";" + prodFact.getPrecio() + ";"
+                        + formatoTotal + "\r\n");
             }
             fw.write(
-                    "---------------------------------------------------------------------------------------------------------\r\n");
-            fw.write("SUBTOTAL                  " + cadena_subTotal + "\r\n");
-            fw.write("DESCUENTO                 " + cadena_sumaDescuentos + "\r\n");
-            fw.write("AHORRO POR AFILIACION     " + cadena_subDescuentoAfiliado + "\r\n");
-            fw.write("IVA                       " + iva + "%" + "\r\n");
-            fw.write("SUBIVA                    " + cadena_subIva + "\r\n");
-            fw.write("TOTAL                     " + cadena_total + "\r\n");
+                    "---------------------------------------------------------------------------------------------------------;\r\n");
+            fw.write("SUBTOTAL;" + cadena_subTotal + ";\r\n");
+            fw.write("DESCUENTO;" + cadena_sumaDescuentos + ";\r\n");
+            fw.write("AHORRO POR AFILIACION;" + cadena_subDescuentoAfiliado + ";\r\n");
+            fw.write("IVA;" + iva + "%" + ";\r\n");
+            fw.write("SUBIVA;" + cadena_subIva + ";\r\n");
+            fw.write("TOTAL;" + cadena_total + ";\r\n");
             fw.write("--------------------------------------------------------\r\n");
-            fw.write("CLIENTE                      " + cliente + "\r\n");
-            fw.write("CEDULA                       " + cedula + "\r\n");
-            fw.write("DIRECCION                    " + direccion + "\r\n");
-            fw.write("FACTURA Nro                  " + nroFactura + "\r\n");
-            fw.write("FEHCA EMISION (dd/mm/aaaa)   " + fechaFormat + "\r\n");
-            fw.write("AUTORIZACION SRI             " + nroFactura + "\r\n");
-            fw.write("Forma de Pago                " + formaPago() + "\r\n");
-            fw.write("========== DEDUCIBLES ==========" + "\r\n");
-            fw.write("Vivienda          " + hogarD + "% " + "\r\n");
-            fw.write("Educacion         " + educacionD + "% " + "\r\n");
-            fw.write("Alimentacion      " + alimentacionD + "% " + "\r\n");
-            fw.write("Vestimenta        " + vestimentaD + "% " + "\r\n");
-            fw.write("Salud             " + saludD + "% " + "\r\n");
-            fw.write("---------------------------------" + "\r\n");
+            fw.write("CLIENTE;" + cliente + ";\r\n");
+            fw.write("CEDULA;" + cedula + ";\r\n");
+            fw.write("DIRECCION;" + direccion + ";\r\n");
+            fw.write("FACTURA Nro;" + numFactura + ";\r\n");
+            fw.write("FEHCA EMISION (dd/mm/aaaa);" + fechaFormat + ";\r\n");
+            fw.write("AUTORIZACION SRI;" + autorizacionSRI + ";\r\n");
+            fw.write("Forma de Pago;" + formaPago() + ";\r\n");
+            fw.write("========== DEDUCIBLES ==========" + ";\r\n");
+            fw.write("Vivienda;" + hogarD + "% " + ";\r\n");
+            fw.write("Educacion;" + educacionD + "% " + ";\r\n");
+            fw.write("Alimentacion;" + alimentacionD + "% " + ";\r\n");
+            fw.write("Vestimenta;" + vestimentaD + "% " + ";\r\n");
+            fw.write("Salud;" + saludD + "% " + ";\r\n");
+            fw.write("---------------------------------" + ";\r\n");
         } catch (IOException e) {
             System.out.println("EROR AL CREAR ARCHIVO " + e);
         }

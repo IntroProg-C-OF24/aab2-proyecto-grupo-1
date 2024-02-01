@@ -3,10 +3,10 @@ import java.awt.Desktop;
 import java.util.*;
 import java.io.*;
 
-public class main {
+public class Main {
 
     static String archivoInventario = "Inventario\\Inventario.csv";
-    public static String archivoFactura = "Facturas\\Factura.txt";
+    public static String archivoFactura = "Facturas\\Factura.csv";
     public static String archivoEstadistica = "Estadistica\\Estadisticas.csv";
 
     public static void main(String[] args) throws Exception {
@@ -30,7 +30,7 @@ public class main {
                     limFactura = teclado.nextInt();
                     System.out.println("INGRESE NUMERO DE PRODUCTOS POR FACTURA");
                     limProductos = teclado.nextInt();
-                    System.out.println("DESEAINGRESAR ALGUNA DIRECCION?     1. SI   |   2.NO");
+                    System.out.println("DESEA INGRESAR ALGUNA DIRECCION?     1. SI   |   2.NO");
                     if (teclado.nextInt() == 1) {
                         System.out.println("INGRESE LA DIRECCION");
                         direccion = teclado.next().trim();
@@ -47,25 +47,26 @@ public class main {
                     } else {
                         System.out.println("SE ASIGANARA UN NOMBRE Y CEDULA ALEATORIA");
                     }
-                    AnimacionCargando("Generando");
+                    //AnimacionCargando("Generando");
                     for (int i = 0; i < limFactura; i++) {
-                        Factura.generarFactura(inventario, limProductos, cliente, cedula, direccion);
+                        Factura.generarFactura(inventario, limProductos, cliente, cedula, direccion, i+1);
                     }
+                    ModificarInventario(inventario);
                     System.out.println("DESEA ABIR EL ARCHIVO?  1. SI   |   2.NO");
                     aux = teclado.nextInt();
                     if (aux == 1) {
 
-                        AnimacionCargando("Abriendo");
+                        //AnimacionCargando("Abriendo");
                         AbrirArchivo(archivoFactura);
                     }
                     break;
                 case 2:
-                    AnimacionCargando("Abriendo");
+                    //AnimacionCargando("Abriendo");
                     AbrirArchivo(archivoInventario);
                     break;
                 case 3:
                     if (Factura.ArchivoVacio(archivoEstadistica)) {
-                        AnimacionCargando("Abriendo");
+                        //AnimacionCargando("Abriendo");
                         AbrirArchivo(archivoEstadistica);
                     } else {
                         System.out.println("NO HAY FACTURAS PARA GENERAR ESTADISTICA");
@@ -147,6 +148,15 @@ public class main {
             Desktop.getDesktop().open(archivo);
         } catch (IOException e) {
             System.out.println("NO SE PUDO ABRIR EL ARCHIVO " + e);
+        }
+    }
+    public static void ModificarInventario(List<Producto> inventario){
+        try(FileWriter fw = new FileWriter(archivoInventario)){
+            for (Producto producto : inventario) {
+                fw.write(producto.getCodigo()+";"+producto.getNombre()+";"+producto.getPrecio()+";"+producto.getCantidad()+";"+producto.getCategoria()+";"+producto.getCaducidad()+"\r\n");
+            }
+        } catch (Exception e) {
+
         }
     }
 }
