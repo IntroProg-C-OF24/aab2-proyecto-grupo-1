@@ -1,0 +1,100 @@
+1;Mani;20.0;118;Alimentacion;20/6/2027
+2;Atun;25.0;106;Alimentacion;20/6/2027
+3;Queso;30.0;82;Alimentacion;20/6/2025
+4;Galletas;40.0;102;Alimentacion;20/6/2025
+5;Cerveza;50.0;83;Alimentacion;20/6/2024
+6;Jugo;60.0;78;Alimentacion;20/6/2024
+7;Pan;70.0;122;Alimentacion;3/10/2024
+8;Sopa de Tomate;80.0;93;Alimentacion;3/10/2026
+9;Pescado;90.0;116;Alimentacion;3/10/2026
+10;Gelatina;120.0;106;Alimentacion;3/10/2026
+11;Aceite;110.0;130;Alimentacion;3/10/2026
+12;Papas;120.0;112;Alimentacion;3/10/2026
+13;Pollo;130.0;101;Alimentacion;17/3/2026
+14;Zanahorias;140.0;131;Alimentacion;17/3/2027
+15;Carne;150.0;94;Alimentacion;17/3/2027
+16;Ensalada;160.0;146;Alimentacion;17/3/2027
+17;Tomates;170.0;106;Alimentacion;17/3/2027
+18;Fideos;180.0;97;Alimentacion;13/5/2024
+19;Yogur;190.0;135;Alimentacion;13/5/2024
+20;Mermelada;200.0;110;Alimentacion;13/5/2024
+21;Lamina magnetica;5.0;151;Educacion;20/6/2027
+22;Resorte flexifilo;6.0;108;Educacion;20/6/2027
+23;Mesa de manipulacion;7.0;139;Educacion;20/6/2025
+24;Fondo de colores para bolsa;8.0;50;Educacion;20/6/2025
+25;Pinzas para recortar papel;9.0;125;Educacion;20/6/2024
+26;Escobilla de acero inoxidable;10.0;102;Educacion;20/6/2024
+27;Bolsa de plastico;11.0;117;Educacion;3/10/2024
+28;Sobre para proteger cosas pequeñas;12.0;110;Educacion;3/10/2026
+29;Marcador;13.0;109;Educacion;3/10/2026
+30;Boligrafo;14.0;88;Educacion;3/10/2026
+31;Lapiz;15.0;123;Educacion;3/10/2026
+32;Panel de aluminio para cubierta;16.0;0;Educacion;3/10/2026
+33;Paleta para colorear;17.0;9;Educacion;17/3/2026
+34;Juego de maletas plasticas;18.0;16;Educacion;17/3/2027
+35;Tiras adhesivas para coser;19.0;35;Educacion;17/3/2027
+36;Kit de reposteria basica;20.0;21;Educacion;17/3/2027
+37;Puzzle;21.0;0;Educacion;17/3/2027
+38;Set de accesorios para bolsa;22.0;14;Educacion;13/5/2024
+39;Bolsa para zapatos;23.0;29;Educacion;13/5/2024
+40;Guantes de cocina;24.0;21;Educacion;13/5/2024
+41;Cama para mascotas;99.62;91;Hogar;20/6/2027
+42;Recortador de barba;8.86;84;Hogar;20/6/2027
+43;Accesorios para dispositivos moviles;15.45;114;Hogar;20/6/2025
+44;Gel hidroalcoholico;199.77;62;Hogar;20/6/2025
+45;Ropa deportiva;183.54;84;Hogar;20/6/2024
+46;Fajas para el cuerpo;156.68;116;Hogar;20/6/2024
+47;Mascara o mascarilla;184.54;69;Hogar;3/10/2024
+48;Guantes de nitrilo;120.71;113;Hogar;3/10/2026
+49;Dispositivos de ahorro de energia;256.88;121;Hogar;3/10/2026
+50;Productos de depilacion;134.7;73;Hogar;3/10/2026
+51;Productos para bebes;82.95;121;Hogar;3/10/2026
+52;Gadgets;252.59;96;Hogar;3/10/2026
+53;Botellas re utilizables;0.15;100;Hogar;17/3/2026
+54;Vaporizador de leche electrico;234.05;64;Hogar;17/3/2027
+55;Repetidor de Red Wifi;265.92;92;Hogar;17/3/2027
+56;Decoracion tematica espacial;148.98;106;Hogar;17/3/2027
+57;Mini proyector para telefono movil;85.84;106;Hogar;17/3/2027
+58;Libros;156.39;27;Hogar;13/5/2024
+59;Controlador de porciones de comida;86.13;55;Hogar;13/5/2024
+60;Dispositivos Amazon;73.79;37;Hogar;13/5/2024
+61;Traje ejecutivo en algodon y seda;184.11;21;Vestimenta;20/6/2027
+62;Chaleco ejecutivo en seda;234.23;59;Vestimenta;20/6/2027
+63;Blazer ejecutivo en gabardina o algodon mezclado;106.84;44;Vestimenta;20/6/2025
+64;Traje de lujo en fibra sintetica y lana;103.25;38;Vestimenta;20/6/2025
+65;Traje de baile en algodon;24.45;12;Vestimenta;20/6/2024
+66;Camisa blanca en algodon y seda;12.02;21;Vestimenta;20/6/2024
+67;Camisa cuadriculada en algodon;94.26;13;Vestimenta;3/10/2024
+68;Camisa sport en algodon;148.88;86;Vestimenta;3/10/2026
+69;Pantalon deportivo en algodon;103.79;103;Vestimenta;3/10/2026
+70;Pantalon chino en seda y algodon;3.01;102;Vestimenta;3/10/2026
+71;Frac de smoking en algodon;255.53;110;Vestimenta;3/10/2026
+72;Cami acolchado en fibra sintetica y algodon;46.7;103;Vestimenta;3/10/2026
+73;Chaqueta acolchada en gabardina;160.4;78;Vestimenta;17/3/2026
+74;Prenda de abrigo en fibra sintetica;160.6;97;Vestimenta;17/3/2027
+75;Vestido largo en seda;235.06;0;Vestimenta;17/3/2027
+76;Vestido casual en algodon y fibra sintetica;228.8;0;Vestimenta;17/3/2027
+77;Bolsa de mano en cuero de cabra;29.98;0;Vestimenta;17/3/2027
+78;Bolso de lujo en cuero y seda;144.69;0;Vestimenta;13/5/2024
+79;Zapatillas casuales en tela sintetica;209.48;0;Vestimenta;13/5/2024
+80;Zapatos de vestir en cuero y acero;227.25;0;Vestimenta;13/5/2024
+81;Pinzas dentales;21.94;118;Salud;20/6/2027
+82;Bisturi;14.63;118;Salud;20/6/2027
+83;Escalpel;37.03;111;Salud;20/6/2025
+84;Forceps;31.69;123;Salud;20/6/2025
+85;Tijeras quirurgicas;14.46;121;Salud;20/6/2024
+86;Tenacillas de pellizcar;11.57;107;Salud;20/6/2024
+87;Aguja de hilo dental;3.68;107;Salud;3/10/2024
+88;Espatula;9.88;108;Salud;3/10/2026
+89;Vaso de Kidd;31.3;92;Salud;3/10/2026
+90;Sifon de borbotones;2.12;111;Salud;3/10/2026
+91;Bolsa de esponja;6.97;110;Salud;3/10/2026
+92;Tapabocas quirurgico;35.52;115;Salud;3/10/2026
+93;Guantes esteriles;40.31;70;Salud;17/3/2026
+94;Bota de piel de cordero;1.25;142;Salud;17/3/2027
+95;Gasa;19.73;109;Salud;17/3/2027
+96;Algodon de lienzo;7.41;100;Salud;17/3/2027
+97;Colirios;30.08;103;Salud;17/3/2027
+98;Agujero de alfiler;33.61;134;Salud;13/5/2024
+99;Eyedropper;14.58;104;Salud;13/5/2024
+100;Compresa;14.07;82;Salud;13/5/2024

@@ -133,7 +133,7 @@ public class Factura {
                     precioT = preciounitario * cantidad;
                     sumaDescuentos += preciounitario;
                     subTotal += preciounitario * cantidad;
-                    Factura factura = new Factura(codigo, producto.getNombre(), cantidad, descuento,
+                    Factura factura = new Factura(codigo, producto.getNombre(), producto.getCantidad(), descuento,
                             producto.getPrecio(),
                             precioT);
                     carrito.add(factura);

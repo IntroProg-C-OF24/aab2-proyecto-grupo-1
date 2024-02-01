@@ -18,9 +18,10 @@ public class Main {
         Scanner teclado = new Scanner(System.in);
         List<Producto> inventario = leerInventario(archivoInventario);
         int op;
+        AbrirArchivo(archivoInventario);
         do {
             System.out.println(
-                    "Seleccione la opcion |      1.GENERAR FACTURAS      |       2.OBSERVAR INVENTARIO       |       3.ESTADISTICAS     |       4.SALIR");
+                    "Seleccione la opcion \n|      1.GENERAR FACTURAS      \n|       2.OBSERVAR INVENTARIO       \n|       3.ESTADISTICAS     \n|       4.SALIR");
             op = teclado.nextInt();
             switch (op) {
                 case 1:
