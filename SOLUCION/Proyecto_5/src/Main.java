@@ -18,7 +18,6 @@ public class Main {
         Scanner teclado = new Scanner(System.in);
         List<Producto> inventario = leerInventario(archivoInventario);
         int op;
-        AbrirArchivo(archivoInventario);
         do {
             System.out.println(
                     "Seleccione la opcion \n|      1.GENERAR FACTURAS      \n|       2.OBSERVAR INVENTARIO       \n|       3.ESTADISTICAS     \n|       4.SALIR");
@@ -48,7 +47,7 @@ public class Main {
                     } else {
                         System.out.println("SE ASIGANARA UN NOMBRE Y CEDULA ALEATORIA");
                     }
-                    //AnimacionCargando("Generando");
+                    AnimacionCargando("Generando");
                     for (int i = 0; i < limFactura; i++) {
                         Factura.generarFactura(inventario, limProductos, cliente, cedula, direccion, i+1);
                     }
@@ -56,18 +55,17 @@ public class Main {
                     System.out.println("DESEA ABIR EL ARCHIVO?  1. SI   |   2.NO");
                     aux = teclado.nextInt();
                     if (aux == 1) {
-
-                        //AnimacionCargando("Abriendo");
+                        AnimacionCargando("Abriendo");
                         AbrirArchivo(archivoFactura);
                     }
                     break;
                 case 2:
-                    //AnimacionCargando("Abriendo");
+                    AnimacionCargando("Abriendo");
                     AbrirArchivo(archivoInventario);
                     break;
                 case 3:
                     if (Factura.ArchivoVacio(archivoEstadistica)) {
-                        //AnimacionCargando("Abriendo");
+                        AnimacionCargando("Abriendo");
                         AbrirArchivo(archivoEstadistica);
                     } else {
                         System.out.println("NO HAY FACTURAS PARA GENERAR ESTADISTICA");
